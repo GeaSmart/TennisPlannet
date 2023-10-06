@@ -1,5 +1,6 @@
 ﻿using TennisPlannet.Web.Models.Dto;
 using TennisPlannet.Web.Service.IService;
+using static TennisPlannet.Web.Utils.Common;
 
 namespace TennisPlannet.Web.Service
 {
@@ -11,34 +12,60 @@ namespace TennisPlannet.Web.Service
         {
             this.baseService = baseService;
         }
-        public Task<ResponseDto?> CreateCouponAsync(CouponDto couponDto)
+        public async Task<ResponseDto?> CreateCouponAsync(CouponDto couponDto)
         {
-            throw new NotImplementedException();
+            return await baseService.SendAsync(new RequestDto
+            {
+                ApiType = ApiType.POST,
+                Url = $"{CouponApiBase}api/coupon",
+                Data = couponDto
+            });
         }
 
-        public Task<ResponseDto?> DeleteCouponAsync(int id)
+        public async Task<ResponseDto?> DeleteCouponAsync(int id)
         {
-            throw new NotImplementedException();
+            return await baseService.SendAsync(new RequestDto
+            {
+                ApiType = ApiType.DELETE,
+                Url = $"{CouponApiBase}api/coupon/{id}"
+            });
         }
 
-        public Task<ResponseDto?> GetAllCouponsAsync()
+        public async Task<ResponseDto?> GetAllCouponsAsync()
         {
-            throw new NotImplementedException();
+            return await baseService.SendAsync(new RequestDto 
+            { 
+                ApiType = ApiType.GET,
+                Url = $"{CouponApiBase}api/coupon"
+            });
         }
 
-        public Task<ResponseDto?> GetCouponAsync(string couponCode)
+        public async Task<ResponseDto?> GetCouponAsync(string couponCode)
         {
-            throw new NotImplementedException();
+            return await baseService.SendAsync(new RequestDto
+            {
+                ApiType = ApiType.GET,
+                Url = $"{CouponApiBase}api/coupon/GetByCode/{couponCode}"
+            });
         }
 
-        public Task<ResponseDto?> GetCouponByIdAsync(int id)
+        public async Task<ResponseDto?> GetCouponByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await baseService.SendAsync(new RequestDto
+            {
+                ApiType = ApiType.GET,
+                Url = $"{CouponApiBase}api/coupon//{id}"
+            });
         }
 
-        public Task<ResponseDto?> UpdateCouponAsync(CouponDto couponDto)
+        public async Task<ResponseDto?> UpdateCouponAsync(CouponDto couponDto)
         {
-            throw new NotImplementedException();
+            return await baseService.SendAsync(new RequestDto
+            {
+                ApiType = ApiType.PUT,
+                Url = $"{CouponApiBase}api/coupon",
+                Data = couponDto
+            });
         }
     }
 }
