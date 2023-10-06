@@ -1,7 +1,20 @@
+using TennisPlannet.Web.Service;
+using TennisPlannet.Web.Service.IService;
+using TennisPlannet.Web.Utils;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Registering Services
+Common.CouponApiBase = builder.Configuration["ServiceUrls:Coupon.Api.Url"];
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IBaseService, BaseService>();
+
+builder.Services.AddHttpClient<ICouponService, CouponService>();
+builder.Services.AddScoped<ICouponService, CouponService>();
 
 var app = builder.Build();
 

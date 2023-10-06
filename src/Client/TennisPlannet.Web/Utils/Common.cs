@@ -2,6 +2,7 @@
 {
     public class Common
     {
+        public static string CouponApiBase { get; set; }
         public enum ApiType
         {
             GET,
