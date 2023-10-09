@@ -21,7 +21,10 @@ namespace TennisPlannet.Web.Controllers
             if(response != null && response.IsSuccess)
             {
                 listCoupons = JsonSerializer.Deserialize<List<CouponDto>>
-                    (response.Result.ToString());
+                    (response.Result.ToString(), new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true,
+                    });
             }
             return View(listCoupons);
         }

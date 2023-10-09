@@ -66,7 +66,11 @@ namespace TennisPlannet.Web.Service
                         return new() { IsSuccess = false, Message = "Internal Server Error" };
                     default:
                         var apiContent = await apiResponse.Content.ReadAsStringAsync();
-                        var apiResponseDto = JsonSerializer.Deserialize<ResponseDto>(apiContent);
+                        var apiResponseDto = JsonSerializer.Deserialize<ResponseDto>(apiContent,
+                            new JsonSerializerOptions
+                            {
+                                PropertyNameCaseInsensitive = true,
+                            });
                         return apiResponseDto;
                 }
             }

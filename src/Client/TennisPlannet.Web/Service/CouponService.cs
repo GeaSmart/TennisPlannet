@@ -38,7 +38,8 @@ namespace TennisPlannet.Web.Service
                 ApiType = ApiType.GET,
                 Url = $"{CouponApiBase}api/coupon"
             };
-            return await baseService.SendAsync(x);
+            var y = await baseService.SendAsync(x);
+            return y;
         }
 
         public async Task<ResponseDto?> GetCouponAsync(string couponCode)
