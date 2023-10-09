@@ -33,11 +33,12 @@ namespace TennisPlannet.Web.Service
 
         public async Task<ResponseDto?> GetAllCouponsAsync()
         {
-            return await baseService.SendAsync(new RequestDto 
-            { 
+            var x = new RequestDto
+            {
                 ApiType = ApiType.GET,
                 Url = $"{CouponApiBase}api/coupon"
-            });
+            };
+            return await baseService.SendAsync(x);
         }
 
         public async Task<ResponseDto?> GetCouponAsync(string couponCode)
