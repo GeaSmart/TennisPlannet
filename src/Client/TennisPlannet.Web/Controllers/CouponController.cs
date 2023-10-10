@@ -28,5 +28,10 @@ namespace TennisPlannet.Web.Controllers
             }
             return View(listCoupons);
         }
+
+        public async Task<IActionResult> CouponCreate()
+        {
+            return View();
+        }
     }
 }
